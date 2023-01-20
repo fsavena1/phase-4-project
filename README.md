@@ -1,6 +1,7 @@
 # Project Template: React/Rails API
 
 Read me push 
+john read me push
 
 ## Description
 
