@@ -1,5 +1,7 @@
 # Project Template: React/Rails API
 
+Read me push 
+
 ## Description
 
 This project is scaffolded so that you can build a React frontend and Rails
