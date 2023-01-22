@@ -20,7 +20,8 @@ puts "seeding NFTs "
         image: Faker::Avatar.image,
         description: Faker::Quote.most_interesting_man_in_the_world,
         price: rand(500..20000),
-        for_sale: Faker::Boolean.boolean
+        for_sale: Faker::Boolean.boolean, 
+        user_id: rand(1..10)
         )
 }
 
