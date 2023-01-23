@@ -1,5 +1,7 @@
 import React from "react";
 import NftCard from "./NftCard";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 
 function NftContainer({ nfts }) {
   const nftList = nfts.map((nft) => {
@@ -12,14 +14,17 @@ function NftContainer({ nfts }) {
         price={nft.price}
         forSale={nft.for_sale}
         user={nft.user.user_name}
+        id={nft.id}
       />
     );
   });
 
   return (
-    <div>
-      <h1>{nftList}</h1>
-    </div>
+    <Container>
+      <Row xs={4}>
+        {nftList}
+      </Row>
+    </Container>
   );
 }
 

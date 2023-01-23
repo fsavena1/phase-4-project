@@ -9,9 +9,6 @@ function NavBar() {
                     <h1> NFT Market</h1>
                 </NavLink>
             </div>
-            <div></div>
-            
-
         </nav>
     )
 }
