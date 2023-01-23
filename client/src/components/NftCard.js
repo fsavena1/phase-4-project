@@ -7,9 +7,7 @@ function NftCard({ name, image, description, price, forSale, user, id }) {
     let navigate = useNavigate()
     return (
         <Col>
-            <Card key={id} style={
-                {}
-            }>
+            <Card key={id}>
                 <Card.Title>{name}</Card.Title>
                 <Card.Img 
                 src={image} 

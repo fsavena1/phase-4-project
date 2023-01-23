@@ -1,8 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect, useState } from 'react'
 import NftContainer from './components/NftContainer'
-import { Route, Routes } from "react-router-dom";
 import NftDetails from './components/NftDetails'
+import NavBar from './components/NavBar'
+import { Route, Routes } from "react-router-dom";
+
 // import NavBar from './components/NavBar'
 // import { Route, Routes } from "react-router-dom";
 
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <Routes>
         <Route exact path="/" element={<NftContainer nfts={nfts} />} />
         <Route exact path="nft/:id" element={<NftDetails />} />

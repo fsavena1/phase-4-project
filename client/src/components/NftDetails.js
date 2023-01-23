@@ -13,16 +13,16 @@ function NftDetails() {
         .then(data => setNftDetail(data))
     }, [id])
 
-    console.log(nftDetail.user_name)
+    console.log(nftDetail)
 
     return (
         <Card>
-            <Card.Title>{nftDetail.user_name}</Card.Title>
-            <Card.Title>{nftDetail.name}</Card.Title>
-            <Card.Img src={nftDetail.image} alt={nftDetail.name} />
-            <Card.Text>{nftDetail.description}</Card.Text>
-            <Card.Text>฿ {nftDetail.price}</Card.Text>
-            <Card.Text>{nftDetail.forSale ? 'Available' : 'Not Available'}</Card.Text>
+            {/* <Card.Title>{nftDetail?.user.user_name}</Card.Title> */}
+            <Card.Title>{nftDetail?.name}</Card.Title>
+            <Card.Img src={nftDetail?.image} alt={nftDetail.name} />
+            <Card.Text>{nftDetail?.description}</Card.Text>
+            <Card.Text>฿ {nftDetail?.price}</Card.Text>
+            <Card.Text>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
         </Card>
 
     )

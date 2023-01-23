@@ -20,11 +20,16 @@ function NftContainer({ nfts }) {
   });
 
   return (
+    <div style={{
+      marginTop: '80px',
+      width: '100%',
+    }}>
     <Container>
       <Row xs={4}>
         {nftList}
       </Row>
     </Container>
+    </div>
   );
 }
 
