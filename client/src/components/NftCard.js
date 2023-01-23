@@ -22,9 +22,7 @@ function NftCard({ name, image, description, price, forSale, user, id }) {
                 <Card.Text className='text-center'>{price} ฿</Card.Text>
                 <Card.Text className='text-center'>{forSale}</Card.Text>
                 <Card.Text className='text-center'>Owner: {user}</Card.Text>
-                <Button >
-                    Buy
-                </Button>
+                {forSale ? <Button>Buy</Button> : <p className='text-center'>Not For Sale</p>}
             </Card>
         </Col>
     )

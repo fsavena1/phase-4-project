@@ -1,5 +1,5 @@
 import Card from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
@@ -23,6 +23,7 @@ function NftDetails() {
         <Card style={{
             margin: '10px auto 0 auto',
             width: '70%',
+            padding: '10px'
         }}>
             <h1>User {review.user_id}</h1>
             <p>{review.body}</p>
@@ -31,12 +32,17 @@ function NftDetails() {
     })
 
     return (
-        <div>
+        <div className='text-center'
+        style={{
+            marginBottom: '20px',
+        }}
+        >
             <div style={{
                 margin: '80px auto 0 auto',
                 display: 'flex',
                 justifyContent: 'center',
-            }}>
+            }}
+            >
                 {/* <div>
                 {nameArr}
                 </div> */}
@@ -50,6 +56,13 @@ function NftDetails() {
                     <Card.Text className='text-center'>Price: {nftDetail?.price} ฿</Card.Text>
                     <Card.Text className='text-center'>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
                 </Card>
+            </div>
+            <div>
+                <Button style={{
+                    marginTop: '10px',
+                }}
+                >Add a Review!
+                </Button>
             </div>
             <div>
                 {reviews}

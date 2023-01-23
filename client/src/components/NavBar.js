@@ -15,11 +15,12 @@ function NavBar({nfts}) {
     return (
         <Navbar variant='dark' bg='dark' fixed='top'>
             <Container>
-                <Navbar.Brand href='/'>NFT MARKET PLACE</Navbar.Brand>
+                <Navbar.Brand href='/nfts'>NFT MARKET PLACE</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                 <Nav className="me-auto">
-                    <Nav.Link href="/">Home</Nav.Link>
+                    <Nav.Link href="/nfts">Home</Nav.Link>
+                    <Nav.Link href="/nfts">NFTs</Nav.Link>
                     <Nav.Link href="">Create Listing</Nav.Link>
                     <NavDropdown title="Profile" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">View my Profile</NavDropdown.Item>
