@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import NftContainer from './components/NftContainer'
 import NftDetails from './components/NftDetails'
 import NavBar from './components/NavBar'
+import ProfilePage from './components/ProfilePage'
 import { Route, Routes } from "react-router-dom";
 
 // import NavBar from './components/NavBar'
@@ -23,10 +24,11 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      <NavBar nfts={nfts}/>
       <Routes>
         <Route exact path="/" element={<NftContainer nfts={nfts} />} />
         <Route exact path="nft/:id" element={<NftDetails />} />
+        <Route exact path="user/:id" element={<ProfilePage />} />
       </Routes>
     </div>
   );

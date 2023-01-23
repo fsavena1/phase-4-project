@@ -1,29 +1,60 @@
 import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 function NftDetails() {
     const [nftDetail, setNftDetail] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const { id } = useParams();
-
+    
     useEffect(() => {
         fetch(`/nfts/${id}`)
         .then(r => r.json())
         .then(data => setNftDetail(data))
     }, [id])
-
+    
     console.log(nftDetail)
 
-    return (
-        <Card>
-            {/* <Card.Title>{nftDetail?.user.user_name}</Card.Title> */}
-            <Card.Title>{nftDetail?.name}</Card.Title>
-            <Card.Img src={nftDetail?.image} alt={nftDetail.name} />
-            <Card.Text>{nftDetail?.description}</Card.Text>
-            <Card.Text>฿ {nftDetail?.price}</Card.Text>
-            <Card.Text>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
+
+    const reviews = nftDetail.reviews?.map(review => {
+        return (
+        <Card style={{
+            margin: '10px auto 0 auto',
+            width: '70%',
+        }}>
+            <h1>User {review.user_id}</h1>
+            <p>{review.body}</p>
         </Card>
+        )
+    })
+
+    return (
+        <div>
+            <div style={{
+                margin: '80px auto 0 auto',
+                display: 'flex',
+                justifyContent: 'center',
+            }}>
+                {/* <div>
+                {nameArr}
+                </div> */}
+                <Card style={{
+                    padding: '20px'
+                }}>
+                    <Card.Title className='text-center'> Owner: {nftDetail.user?.user_name}</Card.Title>
+                    <Card.Title className='text-center'>{nftDetail?.name}</Card.Title>
+                    <Card.Img src={nftDetail?.image} alt={nftDetail?.name} className='text-center'/>
+                    <Card.Text className='text-center'>{nftDetail?.description}</Card.Text>
+                    <Card.Text className='text-center'>Price: {nftDetail?.price} ฿</Card.Text>
+                    <Card.Text className='text-center'>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
+                </Card>
+            </div>
+            <div>
+                {reviews}
+            </div>
+        </div>
 
     )
 }

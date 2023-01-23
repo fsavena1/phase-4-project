@@ -6,18 +6,22 @@ import {useNavigate} from "react-router-dom"
 function NftCard({ name, image, description, price, forSale, user, id }) {
     let navigate = useNavigate()
     return (
-        <Col>
-            <Card key={id}>
-                <Card.Title>{name}</Card.Title>
+        <Col style={{
+            marginTop: '10px',
+        }}>
+            <Card key={id} style={{
+                    padding: '20px'
+                }}>
+                <Card.Title className='text-center'>{name}</Card.Title>
                 <Card.Img 
                 src={image} 
                 alt={name} 
                 onClick={() => navigate(`/nft/${id}`)}
                 />
-                <Card.Text>{description}</Card.Text>
-                <Card.Text>฿ {price}</Card.Text>
-                <Card.Text>{forSale}</Card.Text>
-                <Card.Text>{user}</Card.Text>
+                <Card.Text className='text-center text-truncate'>{description}</Card.Text>
+                <Card.Text className='text-center'>{price} ฿</Card.Text>
+                <Card.Text className='text-center'>{forSale}</Card.Text>
+                <Card.Text className='text-center'>Owner: {user}</Card.Text>
                 <Button >
                     Buy
                 </Button>
