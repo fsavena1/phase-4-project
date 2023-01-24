@@ -27,7 +27,7 @@ function NftContainer({ nfts, loading, user }) {
       marginTop: '80px',
       width: '100%',
     }}>
-      {user ? <h1>Welcome {user.first_name}!</h1> : null}
+      {user ? <h1 className='text-center'>Welcome {user.first_name}!</h1> : null}
       <Container style={{
       }}>
         <Row xs={4}>

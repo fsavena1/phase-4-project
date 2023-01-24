@@ -7,6 +7,7 @@ import NavBar from './components/NavBar'
 import ProfilePage from './components/ProfilePage'
 import LoginPage from './components/LoginPage';
 import SignUpPage from './components/SignUpPage';
+import CreateListing from './components/CreateListing';
 
 // import NavBar from './components/NavBar'
 // import { Route, Routes } from "react-router-dom";
@@ -47,6 +48,10 @@ function App() {
     setUser(user)
   }
 
+  function handleNftListing(newNft) {
+    setNfts([...nfts, newNft])
+  }
+
   if (loading) return <h1>Loading...</h1>
 
   return (
@@ -54,6 +59,7 @@ function App() {
       <NavBar nfts={nfts} user={user} setUser={setUser}/>
       <Routes>
         <Route exact path='/' element={<LoginPage onLogin={handleLogin}/>} />
+        <Route exact path='/create' element={<CreateListing user={user} handleNftListing={handleNftListing}/>} />
         <Route exact path='/signup' element={<SignUpPage />} />
         <Route exact path="/nfts" element={<NftContainer nfts={nfts} user={user} loading={loading}/>} />
         <Route exact path="nft/:id" element={<NftDetails />} />

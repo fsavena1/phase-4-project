@@ -24,13 +24,12 @@ function NavBar({ user, setUser }) {
                 <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                 <Nav className="me-auto">
                     <Nav.Link href="/nfts">Home</Nav.Link>
-                    <Nav.Link href="">Create Listing</Nav.Link>
+                    <Nav.Link href="/create">Create Listing</Nav.Link>
                     <NavDropdown title='My Profile' id="basic-nav-dropdown">
                         <NavDropdown.Item href="/user/:id">View my Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">
                            Sign up 
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         <NavDropdown.Divider/>
                         {user ? 
                         <NavDropdown.Item href="/" onClick={handleLogout}>Logout</NavDropdown.Item> : 
