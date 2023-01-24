@@ -7,12 +7,14 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 
-function NavBar({nfts, user}) {
+function NavBar({ user, setUser }) {
 
-   
-
-    // console.log(user)
-
+    function handleLogout() {
+        fetch('/logout', {
+            method: 'DELETE',
+        })
+        .then(() => setUser(null))
+    }
 
     return (
         <Navbar variant='dark' bg='dark' fixed='top'>
@@ -22,20 +24,17 @@ function NavBar({nfts, user}) {
                 <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                 <Nav className="me-auto">
                     <Nav.Link href="/nfts">Home</Nav.Link>
-                    <Nav.Link href="/nfts">NFTs</Nav.Link>
                     <Nav.Link href="">Create Listing</Nav.Link>
                     <NavDropdown title='My Profile' id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1">View my Profile</NavDropdown.Item>
+                        <NavDropdown.Item href="/user/:id">View my Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">
                            Sign up 
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         <NavDropdown.Divider/>
-                        {user ? <NavDropdown.Item href="/">Logout</NavDropdown.Item> : 
+                        {user ? 
+                        <NavDropdown.Item href="/" onClick={handleLogout}>Logout</NavDropdown.Item> : 
                         <NavDropdown.Item href="/">Login</NavDropdown.Item>}
-                        {/* <NavDropdown.Item href="#action/3.4">
-                            {user ? 'Logout' : 'Login'}
-                        </NavDropdown.Item> */}
                     </NavDropdown>
                 </Nav>
             </Container>

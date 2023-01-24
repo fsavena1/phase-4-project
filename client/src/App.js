@@ -29,8 +29,6 @@ function App() {
     });
   }, []);
 
-  console.log(user)
-
   useEffect(() => {
     fetch("/nfts")
       .then((res) => {
@@ -45,8 +43,6 @@ function App() {
       })
   }, []);
 
-  console.log(errors)
-
   function handleLogin(user){
     setUser(user)
   }
@@ -55,13 +51,13 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar nfts={nfts} user={user}/>
+      <NavBar nfts={nfts} user={user} setUser={setUser}/>
       <Routes>
         <Route exact path='/' element={<LoginPage onLogin={handleLogin}/>} />
         <Route exact path='/signup' element={<SignUpPage />} />
         <Route exact path="/nfts" element={<NftContainer nfts={nfts} user={user} loading={loading}/>} />
         <Route exact path="nft/:id" element={<NftDetails />} />
-        <Route exact path="user/:id" element={<ProfilePage />} />
+        <Route exact path="user/:id" element={<ProfilePage user={user} loading={loading}/>} />
       </Routes>
     </div>
   );
