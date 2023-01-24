@@ -3,7 +3,8 @@ import NftCard from "./NftCard";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 
-function NftContainer({ nfts }) {
+function NftContainer({ nfts, loading, user }) {
+
   const nftList = nfts.map((nft) => {
     return (
       <NftCard
@@ -19,6 +20,8 @@ function NftContainer({ nfts }) {
     );
   });
 
+  if (loading) return <h1>Loading</h1>
+  
   return (
     <div style={{
       marginTop: '80px',

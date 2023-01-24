@@ -4,14 +4,15 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import SignUpPage from './SignUpPage';
 
 
-function NavBar({nfts}) {
 
-    const userImage = nfts.map(nft => {
-        return nft.user.avatar
-    })
+function NavBar({nfts, user}) {
+
+   
+
+    // console.log(user)
+
 
     return (
         <Navbar variant='dark' bg='dark' fixed='top'>
@@ -23,17 +24,18 @@ function NavBar({nfts}) {
                     <Nav.Link href="/nfts">Home</Nav.Link>
                     <Nav.Link href="/nfts">NFTs</Nav.Link>
                     <Nav.Link href="">Create Listing</Nav.Link>
-                    <NavDropdown title="Profile" id="basic-nav-dropdown">
+                    <NavDropdown title='My Profile' id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">View my Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">
                            Sign up 
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                        <NavDropdown.Divider />
-                        <NavDropdown.Item href="#action/3.4">
-                            Logout
-                            {/* make ternary, if user logged in = logout */}
-                        </NavDropdown.Item>
+                        <NavDropdown.Divider/>
+                        {user ? <NavDropdown.Item href="/">Logout</NavDropdown.Item> : 
+                        <NavDropdown.Item href="/">Login</NavDropdown.Item>}
+                        {/* <NavDropdown.Item href="#action/3.4">
+                            {user ? 'Logout' : 'Login'}
+                        </NavDropdown.Item> */}
                     </NavDropdown>
                 </Nav>
             </Container>

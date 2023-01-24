@@ -1,14 +1,16 @@
 class UsersController < ApplicationController
+
+
     def index 
         render json: User.all, status: 200
     end 
     
     def show 
-        user = find_user
-        if user.present?
+        user = User.find_by(session[:user_id])
+        if user
             render json: user, status: 200
         else 
-            render json: {error: "nft not found"}, status: 404
+            render json: {error: "Not authorized"}, status: 404
         end
     end 
 
