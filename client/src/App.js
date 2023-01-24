@@ -6,6 +6,7 @@ import NftDetails from './components/NftDetails'
 import NavBar from './components/NavBar'
 import ProfilePage from './components/ProfilePage'
 import LoginPage from './components/LoginPage';
+import SignUpPage from './components/SignUpPage';
 
 // import NavBar from './components/NavBar'
 // import { Route, Routes } from "react-router-dom";
@@ -28,6 +29,8 @@ function App() {
       <NavBar nfts={nfts}/>
       <Routes>
         <Route exact path='/' element={<LoginPage />} />
+        <Route exact path='/signup' element={<SignUpPage />} />
+    
         <Route exact path="/nfts" element={<NftContainer nfts={nfts} />} />
         <Route exact path="nft/:id" element={<NftDetails />} />
         <Route exact path="user/:id" element={<ProfilePage />} />

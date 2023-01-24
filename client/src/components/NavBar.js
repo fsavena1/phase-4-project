@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import SignUpPage from './SignUpPage';
 
 
 function NavBar({nfts}) {
@@ -24,8 +25,8 @@ function NavBar({nfts}) {
                     <Nav.Link href="">Create Listing</Nav.Link>
                     <NavDropdown title="Profile" id="basic-nav-dropdown">
                         <NavDropdown.Item href="#action/3.1">View my Profile</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">
-                            Another action
+                        <NavDropdown.Item href="/signup">
+                           Sign up 
                         </NavDropdown.Item>
                         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                         <NavDropdown.Divider />
