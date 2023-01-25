@@ -16,6 +16,7 @@ function App() {
 
   const [nfts, setNfts] = useState([])
   const [user, setUser] = useState(null)
+  const [reviews, setReviews] = useState([])
   const [loading, setLoading] = useState(true)
   const [errors, setErrors] = useState('')
   
@@ -44,6 +45,24 @@ function App() {
       })
   }, []);
 
+  useEffect(() => {
+    fetch("/reviews")
+      .then((res) => {
+        if (res.ok) {
+          res.json().then(data => {
+            setReviews(data);
+            setLoading(false);
+          })
+        } else {
+          res.json().then(data => setErrors(data.error))
+        }
+      })
+  }, []);
+
+  function addReview(newRev) {
+    setReviews([...reviews, newRev])
+  }
+
   function handleLogin(user){
     setUser(user)
   }
@@ -62,7 +81,7 @@ function App() {
         <Route exact path='/create' element={<CreateListing user={user} handleNftListing={handleNftListing}/>} />
         <Route exact path='/signup' element={<SignUpPage />} />
         <Route exact path="/nfts" element={<NftContainer nfts={nfts} user={user} loading={loading}/>} />
-        <Route exact path="nft/:id" element={<NftDetails />} />
+        <Route exact path="nft/:id" element={<NftDetails addReview={addReview} user={user} nfts={nfts} reviews={reviews}/>} />
         <Route exact path="user/:id" element={<ProfilePage user={user} loading={loading}/>} />
       </Routes>
     </div>

@@ -12,7 +12,7 @@ function CreateListing({ user, handleNftListing }) {
     const [forSale, setForSale] = useState(false)
     const [newNftError, setNewNftError] = useState('')
 
-    const nav = useNavigate
+    const nav = useNavigate()
 
     function handleListing(e) {
         e.preventDefault();
@@ -30,7 +30,7 @@ function CreateListing({ user, handleNftListing }) {
         }).then(r => {
             if (r.ok) {
                 r.json().then(data => {
-                    nav('/')
+                    nav('/nfts')
                     handleNftListing(data)
                 })
             } else {
