@@ -26,7 +26,7 @@ function NavBar({ user, setUser }) {
                     <Nav.Link href="/nfts">Home</Nav.Link>
                     <Nav.Link href="/create">Create Listing</Nav.Link>
                     <NavDropdown title='My Profile' id="basic-nav-dropdown">
-                        <NavDropdown.Item href="/user/:id">View my Profile</NavDropdown.Item>
+                        <NavDropdown.Item href={`/user/${user.id}`}>View my Profile</NavDropdown.Item>
                         <NavDropdown.Item href="/signup">
                            Sign up 
                         </NavDropdown.Item>

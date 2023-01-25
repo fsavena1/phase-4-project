@@ -1,7 +1,7 @@
-import Button from 'react-bootstrap/Button'
+import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
 function NftCard({ name, image, description, price, forSale, user, id }) {
     let navigate = useNavigate()

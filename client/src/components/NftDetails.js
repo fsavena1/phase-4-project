@@ -1,7 +1,7 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 
 function NftDetails({ addReview, user, nfts }) {
@@ -11,6 +11,7 @@ function NftDetails({ addReview, user, nfts }) {
     const [reviewError, setReviewError] = useState('')
 
     const { id } = useParams();
+    // const nav = useNavigate();
 
     useEffect(() => {
         fetch(`/nfts/${id}`)
@@ -21,23 +22,23 @@ function NftDetails({ addReview, user, nfts }) {
     function handleNewReview(e) {
         fetch('/reviews', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 body: body,
                 user_id: user.id,
                 nft_id: nftDetail.id
             })
         })
-        .then(r => {
-            if (r.ok) {
-                r.json().then(data => {
-                    addReview(data)
-                    setNewReview(false)
-                })
-            } else {
-                r.json().then(data => setReviewError(data.error))
-            }
-        })
+            .then(r => {
+                if (r.ok) {
+                    r.json().then(data => {
+                        addReview(data)
+                        setNewReview(false)
+                    })
+                } else {
+                    r.json().then(data => setReviewError(data.error))
+                }
+            })
     }
 
     const reviewsCard = nftDetail.reviews?.map(review => {
@@ -55,7 +56,7 @@ function NftDetails({ addReview, user, nfts }) {
 
     function handleReviewToggle() {
         setNewReview(!newReview)
-      } 
+    }
 
     return (
         <div className='text-center'
@@ -81,14 +82,19 @@ function NftDetails({ addReview, user, nfts }) {
                     <Card.Text className='text-center'>{nftDetail?.description}</Card.Text>
                     <Card.Text className='text-center'>Price: {nftDetail?.price} ฿</Card.Text>
                     <Card.Text className='text-center'>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
+                    {user ? 
+                        <Button href={`/nft/${id}/edit`}>
+                        Edit
+                        </Button>
+                        : null}
                 </Card>
             </div>
             <div>
                 {newReview ?
-                    <Form 
-                    className='text-center' 
-                    style={{width: '60%', margin: '20px auto 0 auto'}}
-                    onSubmit={handleNewReview}
+                    <Form
+                        className='text-center'
+                        style={{ width: '60%', margin: '20px auto 0 auto' }}
+                        onSubmit={handleNewReview}
                     >
                         <Form.Group className="mb-3" controlId="formBasicReview">
                             <Form.Label>Review</Form.Label>
@@ -103,15 +109,15 @@ function NftDetails({ addReview, user, nfts }) {
                     </Form>
                     : null}
 
-                <Button 
-                style={{marginTop: '10px'}}
-                onClick={handleReviewToggle}
+                <Button
+                    style={{ marginTop: '10px' }}
+                    onClick={handleReviewToggle}
                 >Add a Review!
                 </Button>
                 {reviewError &&
-                <div>
-                    <h1 style={{ margin: '100px auto 0 auto', textAlign: 'center', color: 'red' }}>{reviewError}</h1>
-                </div>}
+                    <div>
+                        <h1 style={{ margin: '100px auto 0 auto', textAlign: 'center', color: 'red' }}>{reviewError}</h1>
+                    </div>}
             </div>
             <div>
                 {reviewsCard}

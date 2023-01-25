@@ -1,4 +1,6 @@
 class NftsController < ApplicationController
+    before_action :check_owner, only: [:update, :destroy]
+
     def index 
         render json: Nft.all, status: 200
     end 
@@ -46,5 +48,11 @@ class NftsController < ApplicationController
     def find_nft 
         Nft.find_by(id: params[:id])
     end 
+
+    def check_owner
+        unless Nft.find(params[:id]).user_id == session[:user_id]
+            head :forbidden
+          end
+    end
 
 end

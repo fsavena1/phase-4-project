@@ -42,7 +42,6 @@ function SignUpPage(){
                         onChange={e => setUserName(e.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicFirstName">
                     <Form.Label>First Name</Form.Label>
                     <Form.Control
@@ -52,7 +51,6 @@ function SignUpPage(){
                         onChange={e => setFirstName(e.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicLastName">
                     <Form.Label>last Name</Form.Label>
                     <Form.Control
@@ -62,7 +60,6 @@ function SignUpPage(){
                         onChange={e => setLastName(e.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -72,7 +69,6 @@ function SignUpPage(){
                         onChange={e => setEmail(e.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicAvatar">
                     <Form.Label>avatar url </Form.Label>
                     <Form.Control
@@ -82,7 +78,6 @@ function SignUpPage(){
                         onChange={e => setAvatar(e.target.value)}
                     />
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
@@ -92,11 +87,9 @@ function SignUpPage(){
                         onChange={e => setPassword(e.target.value)}
                        />
                 </Form.Group>
-
                 <Button
                     variant="primary"
                     type="submit"
-                   
                   >
                     Create Account
                 </Button>

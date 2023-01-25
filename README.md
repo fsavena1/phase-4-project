@@ -49,7 +49,8 @@ Implement authentication/authorization, including password protection. A user mu
 #--------------------------------------------------------------------------------------------------------------------#
 
 To-Do's
- - create resources
- - create routes
- - seed data
- - define relationships
+ - fix nft for sale update
+ - add errors
+ - validations
+ - add username to reviews
+ - authorizations
