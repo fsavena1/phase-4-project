@@ -37,6 +37,7 @@ function LoginPage({ onLogin }) {
     // if (loginErrors) return <h1 style={{margin: '100px auto 0 auto', textAlign: 'center', color: 'red'}}>{loginErrors}</h1>
     return (
         <div style={{ margin: '100px', width: '80%' }}>
+            <h1>Welcome to NFTy!</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicUserName">
                     <Form.Label>Username</Form.Label>
@@ -62,6 +63,7 @@ function LoginPage({ onLogin }) {
                 <Button variant="primary" type="submit">
                     Log In
                 </Button>
+                <p>Don't have an account yet? <a href='/signup'>Create a NFTy account here!</a></p>
             </Form>
             {loginErrors &&
                 <div>

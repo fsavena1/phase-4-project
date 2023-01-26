@@ -45,6 +45,7 @@ function SignUpPage({ setUser }) {
 
   return (
     <div style={{ margin: "100px", width: "80%" }}>
+      <h1>Create your NFTy account!</h1>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicUserName">
           <Form.Label>Username</Form.Label>
@@ -103,6 +104,7 @@ function SignUpPage({ setUser }) {
         <Button variant="primary" type="submit">
           Create Account
         </Button>
+        <p>Already have an account? <a href='/'>Log in here!</a></p>
       </Form>
       {signupErrors ? (signupErrors.map(e => <div><h1 style={{ textAlign: 'center', color: 'red' }}>{e[1]}</h1></div>)
             ) : null}

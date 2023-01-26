@@ -19,7 +19,7 @@ function NavBar({ user, setUser }) {
     return (
         <Navbar variant='dark' bg='dark' fixed='top'>
             <Container>
-                <Navbar.Brand href='/nfts'>NFT MARKET PLACE</Navbar.Brand>
+                <Navbar.Brand href='/nfts'>NFTy Marketplace</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav"></Navbar.Collapse>
                 <Nav className="me-auto">

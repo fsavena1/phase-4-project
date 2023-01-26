@@ -7,8 +7,10 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
   const [editName, setEditName] = useState("");
   const [editDesc, setEditDesc] = useState("");
   const [editPrice, setEditPrice] = useState("");
-  const [editForSale, setEditForSale] = useState(true);
+  const [editForSale, setEditForSale] = useState(false);
   const [editError, setEditError] = useState("");
+
+
 
   const { id } = useParams();
   const nav = useNavigate();
@@ -84,7 +86,7 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
             onChange={(e) => setEditForSale(e.target.checked)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" style={{marginRight: '5px'}}>
           Update
         </Button>
         <Button onClick={handleNftDelete}>Delete</Button>

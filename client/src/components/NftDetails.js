@@ -48,11 +48,13 @@ function NftDetails({ addReview, user, nfts }) {
                 width: '70%',
                 padding: '10px'
             }}>
-                <h1>User {review.user_id}</h1>
-                <p>{review.body}</p>
+                <h1>{review.user.user_name}</h1>
+                <p>{review.body.replace('[','').replace(']','').replace('"','').replace('"', '')}</p>
             </Card>
         )
     })
+
+    console.log(nftDetail.for_sale)
 
     function handleReviewToggle() {
         setNewReview(!newReview)
@@ -81,7 +83,7 @@ function NftDetails({ addReview, user, nfts }) {
                     <Card.Img src={nftDetail?.image} alt={nftDetail?.name} className='text-center' />
                     <Card.Text className='text-center'>{nftDetail?.description}</Card.Text>
                     <Card.Text className='text-center'>Price: {nftDetail?.price} ฿</Card.Text>
-                    <Card.Text className='text-center'>{nftDetail?.forSale ? 'Available' : 'Not Available'}</Card.Text>
+                    <Card.Text className='text-center'>{nftDetail.for_sale ? 'Available' : 'Not Available'}</Card.Text>
                     {user ? 
                         <Button href={`/nft/${id}/edit`}>
                         Edit
