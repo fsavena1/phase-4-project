@@ -47,6 +47,8 @@ function App() {
       })
   }, []);
 
+
+
   useEffect(() => {
     fetch("/reviews")
       .then((res) => {
@@ -100,7 +102,7 @@ function App() {
       <Routes>
         <Route exact path='/' element={<LoginPage onLogin={handleLogin}/>} />
         <Route exact path='/create' element={<CreateListing user={user} handleNftListing={handleNftListing}/>} />
-        <Route exact path='/signup' element={<SignUpPage />} />
+        <Route exact path='/signup' element={<SignUpPage setUser={setUser} />} />
         <Route exact path="/nfts" element={<NftContainer nfts={nfts} user={user} loading={loading}/>} />
         <Route exact path="nft/:id" element={<NftDetails addReview={addReview} user={user} nfts={nfts} reviews={reviews}/>} />
         <Route exact path="nft/:id/edit" element={<NftEdit handleUpdatedNft={handleUpdatedNft} deleteNft={deleteNft}/>} />

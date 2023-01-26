@@ -35,7 +35,7 @@ function CreateListing({ user, handleNftListing }) {
                 })
             } else {
                 r.json().then(data => {
-                    setNewNftError(data.error)
+                    setNewNftError(Object.entries((data.errors)))
                 })
             }
         })
@@ -99,10 +99,9 @@ function CreateListing({ user, handleNftListing }) {
                     Create Listing
                 </Button>
             </Form>
-            {newNftError &&
-                <div>
-                    <h1 style={{ margin: '100px auto 0 auto', textAlign: 'center', color: 'red' }}>{newNftError}</h1>
-                </div>}
+            {newNftError ? (newNftError.map(e => <div><h1 style={{ textAlign: 'center', color: 'red' }}>{e[1]}</h1></div>)
+            ) : null}
+     
         </div>
     )
 }

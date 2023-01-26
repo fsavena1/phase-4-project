@@ -1,14 +1,9 @@
 class User < ApplicationRecord
-    validates :user_name,  presence: true
-    validates :password_digest, presence: true
-
-    validates :user_name, uniqueness: true
-    validates :email, uniqueness: true
-
-    validates :password_digest, numericality: {greater_than_or_equal_to: 4}
-
-
-
+    validates :user_name, :email, :password,  presence: true
+ 
+    validates :user_name, :email, uniqueness: true
+   
+    validates :password, length: {minimum: 4}
 
     has_many :reviews 
     has_many :nfts, through: :reviews

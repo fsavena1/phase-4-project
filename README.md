@@ -50,7 +50,6 @@ Implement authentication/authorization, including password protection. A user mu
 
 To-Do's
  - fix nft for sale update
- - add errors
- - validations
+ - fix error for editing/ deleting nfts that you dont own 
  - add username to reviews
  - authorizations
