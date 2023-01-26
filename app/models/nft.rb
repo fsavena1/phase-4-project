@@ -1,7 +1,15 @@
 class Nft < ApplicationRecord
 
-    validates :name, :image, :description, :price, :for_sale, presence: true
-    validates :name, :image, :description, :price, :for_sale, uniqueness: true
+    validates :name,  presence: true
+    validates :image ,  presence: true
+    validates :description,  presence: true
+    validates :price,  presence: true
+    validates :for_sale,  presence: true
+
+
+    validates :name, uniqueness: true
+    validates :image, uniqueness: true
+    
    
 
     belongs_to :user 
