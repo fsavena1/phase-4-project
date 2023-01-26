@@ -5,7 +5,7 @@ class User < ApplicationRecord
     validates :user_name, uniqueness: true
     validates :email, uniqueness: true
 
-    validates :password_digest, numericality: {:greater_than_or_equal_to 4}
+    validates :password_digest, numericality: {greater_than_or_equal_to: 4}
 
 
 
