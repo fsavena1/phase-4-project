@@ -43,6 +43,7 @@ function CreateListing({ user, handleNftListing }) {
 
     return (
         <div style={{ margin: '100px', width: '80%' }}>
+            <h1> Enter Listing Details</h1>
             <Form onSubmit={handleListing}>
                 <Form.Group className="mb-3" controlId="formBasicUserName">
                     <Form.Label>Name</Form.Label>
