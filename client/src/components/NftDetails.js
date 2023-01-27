@@ -111,11 +111,13 @@ function NftDetails({ addReview, user, nfts }) {
                     </Form>
                     : null}
 
-                <Button
+                    { user ?  <Button
                     style={{ marginTop: '10px' }}
                     onClick={handleReviewToggle}
                 >Add a Review!
-                </Button>
+                </Button>: null  }
+
+               
                 {reviewError &&
                     <div>
                         <h1 style={{ margin: '100px auto 0 auto', textAlign: 'center', color: 'red' }}>{reviewError}</h1>

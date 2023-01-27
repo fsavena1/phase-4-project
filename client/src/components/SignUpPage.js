@@ -31,7 +31,9 @@ function SignUpPage({ setUser }) {
     }).then((r) => {
       if (r.ok) {
         r.json().then((data) => {
-          setSignupErrors(data);
+          navigate("/")
+          setUser(data);
+          
         });
       } else {
         r.json().then(data => {
@@ -41,7 +43,7 @@ function SignUpPage({ setUser }) {
     });
   }
 
-  console.log(signupErrors)
+  // console.log(signupErrors)
 
   return (
     <div style={{ margin: "100px", width: "80%" }}>
@@ -108,6 +110,7 @@ function SignUpPage({ setUser }) {
       </Form>
       {signupErrors ? (signupErrors.map(e => <div><h1 style={{ textAlign: 'center', color: 'red' }}>{e[1]}</h1></div>)
             ) : null}
+            
     </div>
   );
 }

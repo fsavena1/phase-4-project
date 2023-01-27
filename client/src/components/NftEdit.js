@@ -9,11 +9,16 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
   const [editPrice, setEditPrice] = useState("");
   const [editForSale, setEditForSale] = useState(false);
   const [editError, setEditError] = useState("");
-
-
+  const [hasError, setHasError] = useState(false);
+  const [errorCode, setErrorCode] = useState(null);
 
   const { id } = useParams();
   const nav = useNavigate();
+
+  function handleError(statusCode) {
+    setHasError(true);
+    setErrorCode(statusCode);
+  }
 
   function handleEditSubmit(e) {
     e.preventDefault();
@@ -27,15 +32,19 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
         for_sale: editForSale,
       }),
     }).then((r) => {
+      if (r.status === 403) {
+        handleError(r.status);
+        return;
+      }
       if (r.ok) {
         r.json().then((data) => {
           handleUpdatedNft(data);
           nav(`/nft/${id}`);
         });
       } else {
-        r.json().then(data => {
-            setEditError(Object.entries((data.errors)))
-        })
+        r.json().then((data) => {
+          setEditError(Object.entries(data.errors));
+        });
       }
     });
   }
@@ -43,10 +52,15 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
   function handleNftDelete() {
     fetch(`/nfts/${id}`, {
       method: "DELETE",
-    });
-    deleteNft(id);
-    nav("/user/:id");
-  }
+    }).then((r) => {
+      if (r.status === 403) {
+        handleError(r.status);
+      } else if (r.ok) {
+        deleteNft(id);
+        nav("/user/:id");
+      }
+    })}
+
 
   return (
     <div style={{ margin: "100px", width: "80%" }}>
@@ -86,13 +100,32 @@ function NftEdit({ handleUpdatedNft, deleteNft }) {
             onChange={(e) => setEditForSale(e.target.checked)}
           />
         </Form.Group>
-        <Button variant="primary" type="submit" style={{marginRight: '5px'}}>
+        <Button variant="primary" type="submit" style={{ marginRight: "5px" }}>
           Update
         </Button>
         <Button onClick={handleNftDelete}>Delete</Button>
       </Form>
-      {editError ? (editError.map(e => <div><h1 style={{ textAlign: 'center', color: 'red' }}>{e[1]}</h1></div>)
-            ) : null}
+      {editError
+        ? editError.map((e) => (
+            <div>
+              <h1 style={{ textAlign: "center", color: "red" }}>{e[1]}</h1>
+            </div>
+          ))
+        : null}
+
+      {errorCode && (
+        <div>
+          <h1
+            style={{
+              margin: "100px auto 0 auto",
+              textAlign: "center",
+              color: "red",
+            }}
+          >
+           Please only edit or delete NFTs you own
+          </h1>
+        </div>
+      )}
     </div>
   );
 }
