@@ -10,7 +10,8 @@ function NftCard({ name, image, description, price, forSale, user, id }) {
             marginTop: '10px',
         }}>
             <Card key={id} style={{
-                    padding: '20px'
+                    padding: '20px',
+                    border: "2px solid black"
                 }}>
                 <Card.Title className='text-center'>{name}</Card.Title>
                 <Card.Img 
